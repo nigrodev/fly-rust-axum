@@ -1,0 +1,15 @@
+# fly.toml app configuration file for fly-rust-axum example
+app = 'fly-rust-axum'
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true # NOTE: The machines will be stopped when idling
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    hard_limit = 60
+    soft_limit = 30
